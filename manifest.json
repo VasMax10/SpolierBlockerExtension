@@ -1,0 +1,44 @@
+{
+    "manifest_version": 2,
+
+    "name": "Spoiler Blocker by VasMax10",
+    "short_name": "Spoiler Blocker",
+    "version": "0.2",
+    
+    "content_scripts":
+    [
+        {
+            "matches": [
+                "*://*.wikipedia.org/*"
+            ],
+            "run_at": "document_start",
+            "js":["scripts/jquery/jquery-3.6.0.min.js","scripts/contents/content_wiki.js"]
+        },
+        {
+            "matches": [
+                "*://*.youtube.com/*"
+            ],
+            "js":["scripts/jquery/jquery-3.6.0.min.js","scripts/contents/content_youtube.js", "scripts/spoilers.js"]
+        },
+        {
+            "matches": [
+                "*://*.google.com/*"
+            ],
+            "js":["scripts/jquery/jquery-3.6.0.min.js","scripts/contents/content_google.js", "scripts/spoilers.js"]
+        }
+    ],
+    "browser_action":
+    {
+        "default_icon": "assets/icons/icon128.png",
+        "default_popup": "popup.html",
+        "default_title": "Spoiler Blocker"
+    },
+    "background":
+    {
+        "scripts":["scripts/background.js", "scripts/spoilers.js"]
+    },
+    "permissions": [
+        "storage"
+    ],
+    "content_security_policy": "script-src 'self' https://ssl.google-analytics.com; object-src 'self'"
+}

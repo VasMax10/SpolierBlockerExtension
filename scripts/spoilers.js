@@ -1,0 +1,1 @@
+var SPOILER_LIST = [];
